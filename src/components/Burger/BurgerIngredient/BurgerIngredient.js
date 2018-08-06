@@ -15,16 +15,22 @@ class BurgerIngredient extends Components {
                         <div className={classes.Seeds2}></div>
                     </div>
                 );
+                break;
             case 'Meat':
-                return ingredient = <div className={classes.Meat}></div>;
+                ingredient = <div className={classes.Meat}></div>;
+                break;
             case 'Chesse':
-                return ingredient = <div className={classes.Cheese}></div>;
+                ingredient = <div className={classes.Cheese}></div>;
+                break;
             case 'Bacon':
-                return ingredient = <div className={classes.Bacon}></div>;
+                ingredient = <div className={classes.Bacon}></div>;
+                break;
             case 'Salad':
-                return ingredient = <div className={classes.Salad}></div>;
+                ingredient = <div className={classes.Salad}></div>;
+                break;
             case 'bread-bottom':
-                return ingredient = <div className={classes.BreadBottom}></div>;
+                ingredient = <div className={classes.BreadBottom}></div>;
+                break;
 
             default:
                 ingredient = null;
