@@ -1,3 +1,3 @@
 
 # burgerApp
-first React appgit
+first React app
