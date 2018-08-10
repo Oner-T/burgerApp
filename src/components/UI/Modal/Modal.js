@@ -3,12 +3,14 @@ import classes from './Modal.css';
 import Burger from '../../Burger/Burger'
 
 const modal = (props) => {
-    <div>
+    
+    
+    return (<div>
         <Burger>
 
         </Burger>
         Price: {props.price}
-    </div>
+    </div>);
 
 
 };
