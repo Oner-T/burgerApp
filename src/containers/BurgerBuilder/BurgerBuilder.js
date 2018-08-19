@@ -12,12 +12,14 @@ const INGREDIENT_PRICES = {
     meat: 1.3,
     bacon: 0.7
 };
+
+
 class BurgerBuilder extends Component {
 
     state = {
         ingredients: {
-            cheese: 1,
-            meat: 1,
+            cheese: 0,
+            meat: 0,
             salad: 1,
             bacon: 1
         },
@@ -29,19 +31,25 @@ class BurgerBuilder extends Component {
     setPurchasableState = () => {
 
 
-        
+
     };
 
     addIngredientHandler = (type) => {
-        // const beforeCount = this.state[type];
-        // if (beforeCount <= 0) return;
-        // const afterCount = beforeCount + 1;
-        // const updatedState = { ...this.state.ingredients };
-        // this.setState = {}
+        const beforeCount = this.state.ingredients[type];
+       // if (beforeCount <= 0) return;
+        const afterCount = beforeCount + 1;
+        const updatedIngredients = { ...this.state.ingredients };
+        updatedIngredients[type] = afterCount;
+        this.setState({ ingredients: updatedIngredients });
     };
 
-    removeIngredientHandler = () => {
-
+    removeIngredientHandler = (type) => {
+        const beforeCount = this.state.ingredients[type];
+        if (beforeCount <= 0) return;
+        const afterCount = beforeCount - 1;
+        const updatedIngredients = { ...this.state.ingredients };
+        updatedIngredients[type] = afterCount;
+        this.setState({ ingredients: updatedIngredients });
     };
 
 
@@ -50,12 +58,12 @@ class BurgerBuilder extends Component {
         const disabledInfo = {
             ...this.state.ingredients
         };
-        for ( let key in disabledInfo ) {
+        for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0
         };
         return (<Aux>
             <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-                <OrderSummary 
+                <OrderSummary
                     ingredients={this.state.ingredients}
                     price={this.state.totalPrice}
                     purchaseCancelled={this.purchaseCancelHandler}
