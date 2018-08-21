@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Modal.css';
-import Burger from '../../Burger/Burger'
-
-const modal = (props) => {
-    
-    
-    return (<div>
-        <Burger>
-
-        </Burger>
-        Price: {props.price}
-    </div>);
+import BackDrop from "../../UI/Backdrop/Backdrop";
+import Aux from "../../../hoc/Aux1/Aux1";
 
 
+class Modal extends Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+
+        return nextProps.show !== this.props.show;
+
+    };
+
+
+
+
+    render() {
+        return (
+            <Aux>
+                <BackDrop show={this.props.show} clicked={this.props.modalClosed} />
+                <div className={classes.Modal}
+                    style={this.props.show === false ? { display: "none" } : null}>
+                    {this.props.children}
+                </div>
+            </Aux>
+        );
+    }
 };
 
-export default modal;
+export default Modal;
