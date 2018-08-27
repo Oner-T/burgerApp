@@ -30,7 +30,7 @@ class BurgerBuilder extends Component {
 
     };
 
- 
+
     componentDidMount() {
 
 
@@ -88,29 +88,44 @@ class BurgerBuilder extends Component {
 
 
     purchaseContinueHandler = () => {
-        this.setState({ purchasing: true });
-        this.setState({ loading: true });
 
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
 
-            person: {
-                name: "Oner",
-                address: "kerem sok orman apt. no:12/2"
-            },
 
-            deliveryType: "fastest"
+        // this.setState({ purchasing: true });
+        // this.setState({ loading: true });
+
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+
+        //     person: {
+        //         name: "Oner",
+        //         address: "kerem sok orman apt. no:12/2"
+        //     },
+
+        //     deliveryType: "fastest"
+        // }
+
+        // axios.post("/orders.json", order)
+        //     .then(response => { this.setState({ loading: false, purchasing: false }) })
+        //     .catch(err => { this.setState({ loading: false, purchasing: false }) })
+
+        const queryParams = [];
+        for (let i in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(i) + "=" + encodeURIComponent(this.state.ingredients[i]));
         }
 
-        axios.post("/orders.json", order)
-            .then(response => { this.setState({ loading: false, purchasing: false }) })
-            .catch(err => { this.setState({ loading: false, purchasing: false }) })
+        const queryString = queryParams.join('&');
+        this.props.history.push({
+            pathname: "/checkout",
+            search: "?" + queryString
+        });
     };
 
     purchaseCancelHandler = () => {
 
-        this.setState({ purchasing: false });
+        this.props.history.goBack();
+        // this.setState({ purchasing: false });
 
 
     };

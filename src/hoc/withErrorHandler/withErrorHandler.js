@@ -5,7 +5,7 @@ import Aux from "../Aux1/Aux1";
 
 
 
-const withErrorHandler = ( WrappedComponent, axios) => {
+const withErrorHandler = (WrappedComponent, axios) => {
     return class extends Component {
 
         state = {
@@ -15,17 +15,23 @@ const withErrorHandler = ( WrappedComponent, axios) => {
 
         componentWillMount() {
 
-             axios.interceptors.request.use(req => {
-                this.setState( { error: null } );
+            this.reqInt = axios.interceptors.request.use(req => {
+                this.setState({ error: null });
                 return req;
             });
-            axios.interceptors.response.use(res => res, error => {
+            this.resInt = axios.interceptors.response.use(res => res, error => {
                 this.setState({ error: error });
             });
         };
 
-     
-        errorConfirmedHandler= () => {
+        componentWillUnmount() {
+            axios.interceptors.request.eject(this.reqInt);
+            axios.interceptors.request.eject(this.resInt);
+
+        };
+
+
+        errorConfirmedHandler = () => {
 
             this.setState({ error: null });
         };
