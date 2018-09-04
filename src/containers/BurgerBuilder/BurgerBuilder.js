@@ -18,7 +18,7 @@ import * as actions from '../../store/actions/index';
 class BurgerBuilder extends Component {
 
     state = {
-        purchasing: false,
+        purchasing: false
     };
 
 
@@ -35,7 +35,7 @@ class BurgerBuilder extends Component {
                     return ingredients[el]
                 }).reduce((a, b) => a + b);
 
-            return ingredientCount >0;
+            return ingredientCount > 0;
         };
     };
 
@@ -86,9 +86,9 @@ class BurgerBuilder extends Component {
                 purchaseCancelled={this.purchaseCancelHandler}
                 purchaseContinued={this.purchaseContinueHandler} />;
         }
-        if (this.state.loading) {
-            orderSummary = <Spinner />;
-        }
+        // if (this.state.loading) {
+        //  orderSummary = <Spinner />;
+        // }
         // {salad: true, meat: false, ...}
         return (
             <Aux>
@@ -105,8 +105,8 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice
     }
 
 };
@@ -117,7 +117,7 @@ const mapDispatchToProps = dispatch => {
         onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
         onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
         onSetIngredients: () => dispatch(actions.initIngredients()),
-       
+
     }
 }
 

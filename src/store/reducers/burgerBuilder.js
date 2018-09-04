@@ -11,7 +11,8 @@ const INGREDIENT_PRICES = {
 const initialState = {
     ingredients: null,
     totalPrice: 4,
-    error: false
+    error: false,
+    loading:false
 };
 
 const addIngredient = (state, action) => {
@@ -43,7 +44,8 @@ const setIngredients = (state, action) => {
             meat: action.ingredients.meat
         },
         totalPrice: 4,
-        error: false
+        error: false,
+        loading:false
     });
 
 };
