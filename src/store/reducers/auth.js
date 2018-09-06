@@ -8,12 +8,12 @@ const initialState = {
 }
 
 const authFail = (state, action) => {
-
+return null
 
 };
 
 const authSuccess = (state, action) => {
-    return updateObject(state)
+    return updateObject(state, )
 
 };
 

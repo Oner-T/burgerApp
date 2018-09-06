@@ -6,4 +6,9 @@ export {
 export {
     setOrder,
     orderSuccess
-} from "./order"
+} from "./order";
+export {
+    initAuth,
+    authFail,
+    authSuccess
+} from "./auth"
