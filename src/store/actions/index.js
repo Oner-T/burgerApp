@@ -4,9 +4,9 @@ export {
     initIngredients
 } from "./burgerBuilder";
 export {
-    setOrder,
-    orderSuccess,
-    purchaseInit
+    purchaseBurger,
+    purchaseInit,
+    fetchOrders
 } from "./order";
 export {
     authStart,
