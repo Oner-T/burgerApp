@@ -112,7 +112,7 @@ class ContactData extends Component {
         }
 
         this.props.onOrderBurger(order, this.props.token);
-        this.props.history.push("/");
+        
         
     }
 
